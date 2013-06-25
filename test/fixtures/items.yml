@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  character_type_id: 1
+  increasable_id: 1
+  increase_value: 1
+
+two:
+  character_type_id: 1
+  increasable_id: 1
+  increase_value: 1

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  max_health: 1
+  attack: 1
+  defence: 1
+  magic: 1
+
+two:
+  max_health: 1
+  attack: 1
+  defence: 1
+  magic: 1

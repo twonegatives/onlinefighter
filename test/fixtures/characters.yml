@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  character_type_id: 1
+  health: 1
+  weapon_id: 1
+  hood_id: 1
+  armor_id: 1
+  gloves_id: 1
+  boots_id: 1
+
+two:
+  character_type_id: 1
+  health: 1
+  weapon_id: 1
+  hood_id: 1
+  armor_id: 1
+  gloves_id: 1
+  boots_id: 1
