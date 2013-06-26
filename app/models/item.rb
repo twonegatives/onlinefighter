@@ -7,6 +7,9 @@ class Item < ActiveRecord::Base
   belongs_to :character_type
 
   validates :character_type_id, :increasable_id, :increase_value, :item_type_id, :is_equipped, :presence => true
+  validates :item_type_id,    :numericality => { :greater_than_or_equal_to => 0, :less_than => Item::ITEM_TYPES.size }
+  validates :increasable_id,  :numericality => { :greater_than_or_equal_to => 0, :less_than => Item::INCREASABLES.size }
+
 
   after_validation :update_owner_stats, :if => lambda{|i| i.is_equipped.changed?}
 

@@ -1,9 +1,9 @@
 #encoding:utf-8
 class Character < ActiveRecord::Base
-  attr_accessible :character_type_id, :health, :experience, :won, :lost, :defence, :attack, :magic
+  attr_accessible :character_type_id, :health, :experience, :won, :lost, :defence, :attack, :magic, :user_id
   belongs_to :character_type
   has_many :items
-
+  belongs_to :user
 
   validates :character_type_id, :health, :experience, :won, :lost, :defence, :attack, :magic, :presence => true
   validate :has_lteq_one_item_of_type_equipped
@@ -11,7 +11,7 @@ class Character < ActiveRecord::Base
 
   before_validation :set_character_type_defaults, :on => :create
   before_create :give_two_equal_items
-  
+
   def set_character_type_defaults
     if type = self.character_type
       [:defence, :attack, :magic].each do |attribute|

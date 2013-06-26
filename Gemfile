@@ -21,9 +21,12 @@ end
 
 gem 'jquery-rails'
 gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
 gem 'devise'
 gem 'pry'
 gem 'mysql2'
+gem 'haml-rails'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
