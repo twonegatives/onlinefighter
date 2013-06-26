@@ -9,7 +9,17 @@ class Character < ActiveRecord::Base
   validate :has_lteq_one_item_of_type_equipped
   validate :can_equip_items_of_appropriate_type_only
 
+  before_validation :set_character_type_defaults, :on => :create
   before_create :give_two_equal_items
+  
+  def set_character_type_defaults
+    if type = self.character_type
+      [:defence, :attack, :magic].each do |attribute|
+        self.send %Q{#{attribute}=}, type.try(attribute)
+      end
+      self.health = type.max_health
+    end
+  end
 
   def give_two_equal_items
     item_hash = { :character_type_id => self.character_type_id,
