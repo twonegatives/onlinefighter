@@ -1,14 +1,11 @@
 #encoding:utf-8
 class Character < ActiveRecord::Base
   attr_accessible :character_type_id, :health, :experience, :won, :lost, :defence, :attack, :magic
-  [:armor, :boots, :gloves, :hood, :weapon].each do |element|
-    has_one element, :class_name => 'Item'
-  end
   belongs_to :character_type
   has_many :items
 
 
-  validates :character_type_id, :health, :experience, :won, :lost, :presence => true
+  validates :character_type_id, :health, :experience, :won, :lost, :defence, :attack, :magic, :presence => true
   validate :has_lteq_one_item_of_type_equipped
   validate :can_equip_items_of_appropriate_type_only
 
