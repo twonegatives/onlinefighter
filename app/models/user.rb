@@ -5,15 +5,9 @@ class User < ActiveRecord::Base
   devise  :database_authenticatable, #:registerable, :recoverable,
           :rememberable, :trackable, :validatable, :omniauthable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid, :username
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :username
 
-  def self.from_omniauth auth
-    where(auth.slice(:provider, :uid)).first_or_create do |user|
-      user.provider = auth.provider
-      user.uid      = auth.uid
-      user.username = auth.info.nickname
-    end
-  end
+  has_many :services, :dependent => :destroy
 
   def self.new_with_session params, session
     if hash = session["devise.user_attributes"]
@@ -26,11 +20,11 @@ class User < ActiveRecord::Base
     end
   end
 
-  [:password_required?, :email_required?].each do |method_name|
-    define_method(method_name) do
-      super if provider.blank?
-    end
-  end
+  #[:password_required?, :email_required?].each do |method_name|
+  #  define_method(method_name) do
+  #    super if provider.blank?
+  #  end
+  #end
 
   def update_with_password(params, *options)
     if encrypted_password.blank?

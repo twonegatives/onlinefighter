@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130626141552) do
+ActiveRecord::Schema.define(:version => 20130629052026) do
 
   create_table "character_types", :force => true do |t|
     t.integer  "max_health"
@@ -48,6 +48,16 @@ ActiveRecord::Schema.define(:version => 20130626141552) do
     t.datetime "updated_at",                           :null => false
   end
 
+  create_table "services", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "uname"
+    t.string   "uemail"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -61,8 +71,6 @@ ActiveRecord::Schema.define(:version => 20130626141552) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "provider"
-    t.string   "uid"
     t.string   "username"
   end
 

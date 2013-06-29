@@ -223,6 +223,7 @@ Devise.setup do |config|
 
   config.omniauth :twitter,   TWITTER_CONFIG['app_id'],   TWITTER_CONFIG['secret']
   config.omniauth :facebook,  FACEBOOK_CONFIG['app_id'],  FACEBOOK_CONFIG['secret']
+  config.omniauth :vkontakte, VKONTAKTE_CONFIG['app_id'], VKONTAKTE_CONFIG['secret']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
