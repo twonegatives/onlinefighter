@@ -7,10 +7,39 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div id='container'>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
+    <div id="user_nav">
+      <% if user_signed_in? %>
+        Logged in as <strong><%= current_user.email %></strong>.
+        <%= link_to 'Edit profile', edit_user_registration_path %> |
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to "Login", new_user_session_path %> |
+        <%= link_to "Sign in with Twitter", user_omniauth_authorize_path(:twitter) %> |
+        <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %> |
+        <%= link_to "Sign in with Vkontakte", user_omniauth_authorize_path(:vkontakte) %> |
+      <% end %>
+    </div>
 
+    <div id="notifications">
+      <% if alert %>
+        <div class="alert alert-error">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= alert %>
+        </div>
+      <% end %>
+
+      <% if notice %>
+        <div class="alert alert-success">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= notice %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= yield %>
+
+  </div>
 </body>
 </html>

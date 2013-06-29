@@ -28,7 +28,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in_and_redirect auth.user, :event => :authentication
       else
         if email.blank?
-          binding.pry
           flash.alert = 'Sign in via ' + provider + ' can not be used to sign up as no valid email address provided. Please sign in with another social network and bind your ' + provider + ' account to it.'
           redirect_to root_path
         else

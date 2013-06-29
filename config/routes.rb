@@ -4,6 +4,16 @@ Onlinefighter::Application.routes.draw do
                       controllers: {omniauth_callbacks: "omniauth_callbacks"}
 
   root :to => 'application#welcome'
+  resources :characters do
+    collection do
+      get 'welcome'
+      get 'dashboard'
+    end
+  end
+
+  match 'characters/new' => 'characters#new'
+  match 'characters/dashboard' => 'characters#dashboard'
+  match 'characters/choose/:id' => 'characters#choose'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

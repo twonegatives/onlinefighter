@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130629052026) do
+ActiveRecord::Schema.define(:version => 20130629111636) do
 
   create_table "character_types", :force => true do |t|
     t.integer  "max_health"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20130629052026) do
     t.integer  "lost",              :default => 9
     t.integer  "defence"
     t.integer  "attack"
-    t.integer  "magick"
+    t.integer  "magic"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.integer  "user_id"

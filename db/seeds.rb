@@ -17,9 +17,10 @@
                         hash
                       end
   class_created   =   CharacterType.create! attributes_hash.merge({:name => class_name})
-  Character.create!(:character_type_id => class_created)
+  Character.create!(:character_type_id => class_created.id)
 end
 
 Item::ITEM_TYPES.each_with_index do |item_type, index|
-  Item.create!(:character_type_id => index, :increasable_id => Random.rand(Item::INCREASABLES.size), :increase_value => Random.rand(5), :item_type_id => Random.rand(Item::ITEM_TYPES.size))
+  attributes_hash = {:character_type_id => index, :increasable_id => Random.rand(Item::INCREASABLES.size), :increase_value => Random.rand(5), :item_type_id => Random.rand(Item::ITEM_TYPES.size), :is_equipped => false}
+  Item.create!(attributes_hash)
 end
