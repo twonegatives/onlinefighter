@@ -16,3 +16,7 @@
 *.rb.swp
 *.swp
 *.swo
+config/database.yml
+config/config_twitter.yml
+config/config_facebook.yml
+config/config_vkontakte.yml
