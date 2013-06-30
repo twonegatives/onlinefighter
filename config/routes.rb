@@ -6,10 +6,12 @@ Onlinefighter::Application.routes.draw do
   root :to => 'application#welcome'
   match 'characters/new' => 'characters#new'
   match 'characters/dashboard' => 'characters#dashboard'
-  match 'characters/choose' => 'characters#choose', :as => :post
-  match 'items/equip' => 'items#equip', :as => :post
-  match 'battles/create' => 'battles#create', :as => :post
-  match 'characters/destroy' => 'characters#destroy', :as => :post
+  match 'characters/choose' => 'characters#choose', :via => :post
+  match 'services/create' => 'services#create', :via => :post
+  match 'items/equip' => 'items#equip', :via => :post
+  match 'battles/create' => 'battles#create', :via => :post
+  match 'characters/destroy' => 'characters#destroy', :via => :post
+  match 'services/destroy' => 'services#destroy', :via => :post
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

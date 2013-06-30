@@ -12,6 +12,11 @@
     <div id="user_nav">
       <% if user_signed_in? %>
         Logged in as <strong><%= current_user.email %></strong>.
+        <% if current_user.character.present? %>
+          <%= link_to "Dashboard", characters_dashboard_path %> |
+        <% else %>
+          <%= link_to "New character", characters_new_path %> |
+        <% end %>
         <%= link_to 'Edit profile', edit_user_registration_path %> |
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       <% else %>

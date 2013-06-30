@@ -2,7 +2,7 @@ class CharactersController < ApplicationController
 
   before_filter :redirect_to_new_unless_character, :only => [:dashboard, :destroy]
   before_filter :redirect_to_new_unless_choose, :only => :choose
-  before_filter :redirect_to_dashboard_if_character_exists, :only => :choose
+  before_filter :redirect_to_dashboard_if_character_exists, :only => [:choose, :new]
   before_filter :redirect_to_root_unless_signed_in, :only => :new
 
   def new
@@ -50,11 +50,11 @@ class CharactersController < ApplicationController
   end
 
   def redirect_to_new_unless_character
-    redirect_with_error('You should create a character firstly.', new_character_path) unless current_user.try(:character).present?
+    redirect_with_error('You should create a character firstly.', characters_new_path) unless current_user.try(:character).present?
   end
 
   def redirect_to_new_unless_choose
-    redirect_with_error('You should select a character to play.', new_character_path) unless params[:id]
+    redirect_with_error('You should select a character to play.', characters_new_path) unless params[:id]
   end
 
   def redirect_to_dashboard_if_character_exists

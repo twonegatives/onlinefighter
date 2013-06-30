@@ -1,0 +1,39 @@
+%h3== Edit profile
+
+%h4== Profile information
+%table.table.table-condensed.table-centered
+  %tr
+    %th== Username
+    %th== Email
+    %th== Character
+  %tr
+    %td= current_user.username
+    %td= current_user.email
+    %td= (current_user.character ? '<i class="icon-ok"></i>' : '<i class="icon-remove"></i>').html_safe
+%h4== Social accounts
+- services = current_user.services.all
+%table.table.table-condensed.table-centered
+  %tr
+    %th== Provider
+    %th== Uid
+    %th== Uname
+    %th== Uemail
+    %th
+  = content_tag_for(:tr, services) do |service|
+    %td= service.provider
+    %td= service.uid
+    %td= service.uname
+    %td= service.uemail
+    %td= button_to( 'Remove ' + service.provider, {:controller => '/services', :action => 'destroy', :id => service.id} )
+
+  - (['facebook','twitter','vkontakte'] - services.map{|i| i.provider}).each do |unused_service|
+    %tr
+      = form_for(Service.new(provider: unused_service), as: :service, url: services_create_path) do |f|
+        = f.hidden_field :provider
+        %td= unused_service
+        %td= f.text_field :uid, :size => 10
+        %td= f.text_field :uname, :size => 10
+        %td= f.text_field :uemail, :size => 10
+        %td= f.submit 'Link with ' + unused_service
+
+
