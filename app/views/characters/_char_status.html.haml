@@ -1,0 +1,19 @@
+%h3{:style => 'text-align:center;'}== Character status
+.span2.char_info
+  %h3= @character.character_type.name.upcase
+  - [:attack, :defence, :magic, :health, :experience, :won_battles_count, :lost].each do |attribute|
+    %p= "#{attribute.to_s.humanize}: #{@character.try(attribute)}"
+.span7
+  .row
+    .span2.offset3
+      = slot_item :hood, @character.items
+  .row
+    .span2.offset1
+      = slot_item :gloves, @character.items
+    .span2
+      = slot_item :armor, @character.items
+    .span2
+      = slot_item :weapon, @character.items
+  .row
+    .span2.offset3
+      = slot_item :boots, @character.items

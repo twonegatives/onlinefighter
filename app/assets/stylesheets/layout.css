@@ -11,23 +11,47 @@ a img {
 a {
   color: #0000FF;
 }
-
+.table-centered td, .table-centered th {
+  text-align: center !important;
+  vertical-align:middle !important;
+}
 .clear {
   clear: both;
   height: 0;
   overflow: hidden;
 }
-
-.char:hover{
-  background-color:#81A950;
-  text-decoration:none;
-  color:black;}
-.char{
-  cursor:pointer;
-  background-color: #81A9CF;
+.char_info{
+  display:block;
+  text-align:center;
+  margin-top: 20px;
+}
+.status_item{
   display:block;
   text-align:center;
   border: solid 1px black;
+  margin-top: 20px;
+}
+.disabled_item{
+  background-color: darkgray;
+}
+.equipped_item{
+  cursor:pointer;
+  background-color: #81A9CF;
+}
+.char{
+  cursor:pointer;
+  background-color: #81A9CF;
+  border: solid 1px black;
+}
+.item:hover{
+  text-decoration:none;
+  color:black;
+}
+.equipped_item:hover{
+  background-color:darkred;
+}
+.char:hover{
+  background-color:#81A950;
 }
 
 #notifications{

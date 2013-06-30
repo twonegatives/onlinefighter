@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
       if current_user.character.present?
         redirect_to characters_dashboard_path
       else
-        redirect_to new_character_path
+        redirect_to characters_new_path
       end
     end
   end

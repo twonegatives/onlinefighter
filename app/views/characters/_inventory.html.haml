@@ -1,0 +1,14 @@
+%h3{:style => 'text-align:center;'}== Inventory
+%table.table.table-condensed.table-centered.inventory-table
+  %tr
+    %th== Char Type
+    %th== Item type
+    %th== Increases
+    %th== Increase by
+    %th== Equip item
+  = content_tag_for(:tr, @character.items.not_equipped.includes(:character_type)) do |item|
+    %td= item.character_type.name
+    %td= Item::ITEM_TYPES[item.item_type_id]
+    %td= Item::INCREASABLES[item.increasable_id]
+    %td= item.increase_value
+    %td= equip_item_link(item, @character)

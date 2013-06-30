@@ -1,1 +1,24 @@
-dashboard
+#top_dashboard
+  = render 'top_dashboard'
+#arena_dashboard
+  = form_tag '/battles/create', :method => :post do
+    = hidden_field_tag :enemy_id
+    %h3{:style => 'text-align:center;'}== Arena
+    %table.table.table-condensed.table-centered.arena-table
+      %tr
+        %th== Char Type
+        %th== Attack
+        %th== Defence
+        %th== Magic
+        %th== Health
+        %th== Experience
+        %th== Fight!
+      = content_tag_for(:tr, @enemies) do |enemy|
+        %td= enemy.character_type.name
+        %td= enemy.attack
+        %td= enemy.defence
+        %td= enemy.magic
+        %td= enemy.health
+        %td= enemy.experience
+        %td= link_to '<i class="icon-tint"></i>'.html_safe, '#', :data => {:enemy_id => enemy.id}, :class => 'btn btn-mini go_fight'
+    = submit_tag 'Send', :style => 'display:none'

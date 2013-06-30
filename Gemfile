@@ -22,6 +22,9 @@ end
 gem 'jquery-rails'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'therubyracer'  # If using Ruby
+gem 'jquery-rails'  # If using Bootstrap's JS plugins.
+gem 'less-rails-bootstrap'
 gem 'omniauth-twitter'
 gem 'omniauth-vkontakte'
 gem 'devise'

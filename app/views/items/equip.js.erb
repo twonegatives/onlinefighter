@@ -1,0 +1,3 @@
+$('#top_dashboard').html('<%= escape_javascript( render :partial => 'characters/top_dashboard' )%>');
+var str = "<%= @flag == true ? 'Equipped' : 'Unequipped' %>"
+alert(str + ' item successfully');

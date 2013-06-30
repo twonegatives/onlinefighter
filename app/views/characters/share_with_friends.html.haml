@@ -1,0 +1,8 @@
+%h3== Congratulations!
+= "You have already played 5 battles and won #{@character.won_battles.count} of them! Share link to this site with your friends and get +50 health for free!"
+%hr
+= link_to( '<i class="icon-thumbs-up"></i> Tweet about it'.html_safe, "http://twitter.com/share?url=#{@share.first}&text=#{@share.last}", :class => 'btn btn-mini', :target => '_blank')
+= link_to( '<i class="icon-thumbs-up"></i> Like with Facebook'.html_safe, "https://www.facebook.com/sharer/sharer.php?u=#{@share.first}&t=#{@share.last}", :class => 'btn btn-mini', :target => '_blank')
+= link_to( '<i class="icon-thumbs-up"></i> Like with VK'.html_safe, "http://vkontakte.ru/share.php?url=#{@share.first}", :class => 'btn btn-mini', :target => '_blank')
+%hr
+= button_to( 'Reset character and play again', {:controller => 'characters', :action => 'destroy'}, {:class => 'btn'})

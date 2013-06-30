@@ -1,10 +1,12 @@
 - if current_user && current_user.character.nil?
-  .row{:style => 'margin-top:40px;'}
-    .span1
-    - @character_types.each do |ctype|
-      .span2
-        %a.char{:href => "/characters/choose/#{ctype.id}"}
-          %h4= ctype.name
-          - [:attack, :defence, :magic, :max_health].each do |attribute|
-            .attribute
-              = attribute.to_s + ': ' + ctype.try(attribute).to_s
+  = form_tag '/characters/choose', :method => 'post' do
+    .row{:style => 'margin-top:40px;'}
+      - @character_types.each do |ctype|
+        .span2
+          %a.char_info.char.selecting_char_type{:data => {:id => ctype.id }}
+            %h4= ctype.name
+            - [:attack, :defence, :magic, :max_health].each do |attribute|
+              .attribute
+                = attribute.to_s + ': ' + ctype.try(attribute).to_s
+    = hidden_field_tag :id, nil
+    = submit_tag 'Send', :style => 'display:none'

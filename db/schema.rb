@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130629111636) do
+ActiveRecord::Schema.define(:version => 20130630074720) do
+
+  create_table "battles", :force => true do |t|
+    t.integer  "fighter1_id"
+    t.integer  "fighter2_id"
+    t.integer  "winner_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "character_types", :force => true do |t|
     t.integer  "max_health"
@@ -27,14 +35,14 @@ ActiveRecord::Schema.define(:version => 20130629111636) do
     t.integer  "character_type_id"
     t.integer  "health"
     t.integer  "experience",        :default => 0
-    t.integer  "won",               :default => 0
-    t.integer  "lost",              :default => 9
+    t.integer  "lost",              :default => 0
     t.integer  "defence"
     t.integer  "attack"
     t.integer  "magic"
     t.datetime "created_at",                       :null => false
     t.datetime "updated_at",                       :null => false
     t.integer  "user_id"
+    t.integer  "won_battles_count", :default => 0
   end
 
   create_table "items", :force => true do |t|
